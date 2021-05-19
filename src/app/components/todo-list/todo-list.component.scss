@@ -1,0 +1,247 @@
+.todo-list {
+  padding-top: 40px;
+  .new-task-button {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      background: #183c5b;
+      border: 1px solid #183c5b;
+      box-shadow: none;
+    }
+  }
+  .filters {
+    h3 {
+      color: #ffffff;
+      font-size: 18px;
+    }
+    > div {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      .title-filter {
+        input {
+          background: #f2f2f2;
+          box-shadow: none;
+          outline: none;
+          border: none;
+        }
+      }
+      .date-filter {
+        input {
+          background: #f2f2f2;
+          box-shadow: none;
+          outline: none;
+          border: none;
+          padding: 6px;
+          width: 100%;
+          border-radius: 5px;
+        }
+      }
+      .group-filter {
+        p {
+          margin-bottom: 7px;
+        }
+        select {
+          padding: 7px;
+          border-radius: 3px;
+          border: none;
+          margin-bottom: 25px;
+          outline: none;
+          width: 100%;
+          background: #f2f2f2;
+          color: #777f85;
+        }
+        // .dropdown {
+        //   button {
+        //     color: #717981;
+        //     background-color: #f2f2f2;
+        //     border-color: #f2f2f2;
+        //     outline: none;
+        //     box-shadow: none;
+        //   }
+        // }
+        // .btn-group {
+        //   button {
+        //     background: #f2f2f2;
+        //     color: #6d767e;
+        //     border: none;
+        //     box-shadow: none;
+        //     outline: none;
+        //   }
+        // }
+      }
+    }
+  }
+  .groups-list {
+    form {
+      > .action-buttons {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+        button:disabled {
+          background: #949494 !important;
+          border: 1px solid #949494 !important;
+        }
+        button:nth-child(1) {
+          margin-right: 5px;
+          background: #ff9c9c;
+          border: 1px solid #ff9c9c;
+          box-shadow: none;
+        }
+        button:nth-child(2) {
+          background: #86e0a4;
+          border: 1px solid #86e0a4;
+          box-shadow: none;
+          margin-right: 5px;
+        }
+        button:nth-child(3) {
+          background: #343a40;
+          border: 1px solid #343a40;
+          box-shadow: none;
+        }
+      }
+      .group {
+        margin-bottom: 20px !important;
+        h3 {
+          color: #ffffff;
+          font-size: 18px;
+          margin-bottom: 20px !important;
+          span {
+            background: #427a95;
+            padding: 5px 15px;
+            border-radius: 3px;
+          }
+        }
+
+        .task {
+          display: flex;
+          justify-content: space-between;
+          background: #ffffff;
+          cursor: pointer;
+          padding: 10px;
+          border-radius: 5px;
+          margin-bottom: 10px;
+
+          p {
+            font-size: 14px;
+            color: #183c5b;
+          }
+
+          .action-buttons {
+            button {
+              border-radius: 50%;
+              box-shadow: none;
+            }
+            button.btn-danger {
+              margin-right: 5px;
+              background: #ff9c9c;
+              border: 1px solid #ff9c9c;
+            }
+            button.btn-success {
+              background: #86e0a4;
+              border: 1px solid #86e0a4;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// custom checkbox
+.task-title {
+  // display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.task-title input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border: 1px solid;
+  border-radius: 2px;
+  &:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+}
+
+/* On mouse-over, add a grey background color */
+.task-title:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.task-title input:checked ~ .checkmark {
+  background-color: #183c5b;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.task-title input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.task-title .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+//data picker
+
+::ng-deep bs-datepicker-container {
+  .bs-datepicker {
+    .bs-datepicker-container {
+      .bs-datepicker-head {
+        background-color: #173c5a !important;
+      }
+      .bs-datepicker-body {
+        tbody {
+          tr {
+            td {
+              span {
+                color: #173c5a;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

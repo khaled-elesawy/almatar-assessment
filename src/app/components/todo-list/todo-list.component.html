@@ -1,0 +1,88 @@
+<section class="todo-list">
+  <div class="container">
+    <div class="new-task-button">
+      <button class="btn btn-primary" routerLink="/add-todo">
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        new task
+      </button>
+    </div>
+    <div class="filters">
+      <h3><span>filtered by</span></h3>
+      <div>
+        <div class="row">
+          <div class="date-filter col-xs-12 col-12 col-md-4 col-lg-3 form-group">
+            <label for="">day</label>
+            <input type="date"  [(ngModel)] = 'filteredDate' #date (change)="onSelectDate(date.value)">
+          </div>
+          <div class="title-filter col-xs-12 col-12 col-md-4 col-lg-3 form-group">
+            <label for="">title</label>
+            <input type="text" class="form-control" [(ngModel)]="filteredTitle">
+          </div>
+          <div class="group-filter col-xs-12 col-12 col-md-4 col-lg-3 form-group">
+            <p>group</p>
+            <select [(ngModel)]="filteredGroup">
+              <option value="">all</option>
+              <option *ngFor="let group of todoLists">{{ group.groupName }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="groups-list">
+      <form>
+        <div class="action-buttons">
+          <button class="btn btn-danger" type="button" [disabled]="multipleSelectedTasks.length == 0" (click)="onDeleteMultiple()">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+            delete selected
+          </button>
+          <button class="btn btn-success" type="submit" [disabled]="multipleSelectedTasks.length == 0" (click)="onDoneMultiple()">
+            <i class="fa fa-check" aria-hidden="true"></i>
+            done
+          </button>
+          <button class="btn btn-success" type="submit" *ngIf="multipleSelectedTasks.length !== 0" (click)="onPendingMultiple()">
+            <i class="fa fa-undo" aria-hidden="true"></i>
+            pending
+          </button>
+        </div>
+        <div>
+          <div class="group" *ngFor="let todo of todoLists | groupNameFilter :filteredGroup : 'groupName' ">
+            <div>
+              <h3><span>{{ todo.groupName }}</span></h3>
+            </div>
+            <div class="task form-group form-check"
+              *ngFor="let task of todo.tasks
+              |taskTitleFilter : filteredTitle :'taskTitle'
+              let i =index "
+              #task>
+              <div>
+                <label class="task-title">{{ task.taskTitle  }}
+                  <input type="checkbox" [value]="task.taskTitle" #taskTitle (change)="onSelectMultiple($event, task)">
+                  <span class="checkmark"></span>
+                </label>
+                <div>
+                  <p>current state: {{ task.taskState }}</p>
+                  <p>task date: {{ task.taskDate | date }}</p>
+                  <p (click)="onSelectTask(task)" routerLink="/todo-details">more details ...</p>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <button class="btn btn-danger" type="button" (click)="onDeleteTask(task, i)">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-success" type="submit" (click)="onDoneTask(task)"
+                  *ngIf="task.taskState === 'pending'">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-dark" type="submit" (click)="onPendingTask(task)"
+                  *ngIf="task.taskState === 'done'">
+                  <i class="fa fa-undo" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

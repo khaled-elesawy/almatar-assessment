@@ -1,0 +1,16 @@
+<section class="task-details">
+  <div>
+    <div *ngIf="task">
+      <p>task name: {{ task.taskTitle }}</p>
+      <p>date: {{ task.taskDate | date}}</p>
+      <p>current state:  {{ task.taskState }}</p>
+      <p>task description: {{ task.taskDescription }}</p>
+      <p>priority level: {{ task.taskPriority }}</p>
+      <p>task group number: {{ task.taskGroup }}</p>
+    </div>
+    <div *ngIf="!task">
+      <p>kindly select a task</p>
+    </div>
+  </div>
+
+</section>

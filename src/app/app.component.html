@@ -1,0 +1,81 @@
+<section class="wrapper">
+  <!-- Sidebar  -->
+  <nav id="sidebar" #sidebar [class.active]="toggleIsActive">
+    <div class="sidebar-header">
+
+    </div>
+
+    <ul class="list-unstyled components">
+      <li class="active logo">
+        <a routerLink="">
+          <img src="../assets/images/adv_almatar.jpeg" alt="">
+          <h3>almatar</h3>
+        </a>
+      </li>
+      <li>
+        <a routerLink="">
+          <i class="fa fa-home" aria-hidden="true"></i>
+          home
+        </a>
+      </li>
+      <li>
+        <a routerLink="" (click)="onSelectAll()">
+          <i class="fa fa-list" aria-hidden="true"></i>
+          all
+        </a>
+      </li>
+      <li>
+        <a routerLink="" (click)="onSelectToday()">
+          <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+          today
+        </a>
+      </li>
+      <li>
+        <a routerLink="" (click)="onSelectWeek()">
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          week
+        </a>
+      </li>
+      <li>
+        <a routerLink="" (click)="onSelectDone()">
+          <i class="fa fa-check-square-o" aria-hidden="true"></i>
+          done
+        </a>
+      </li>
+      <li>
+        <a routerLink="" (click)="onSelectPending()">
+          <i class="fa fa-undo" aria-hidden="true"></i>
+          pending
+        </a>
+      </li>
+      <li class="active">
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+          <i class="fa fa-folder" aria-hidden="true"></i>
+          groups
+
+        </a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li>
+            <a *ngFor="let todo of todoLists" (click)="onSelectGroup(todo)">{{ todo.groupName }}</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="content">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="onToggleSidenav()">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+          <span></span>
+        </button>
+        <h3>{{ navbarText }}</h3>
+      </div>
+    </nav>
+    <!-- routing -->
+    <router-outlet></router-outlet>
+  </div>
+</section>
