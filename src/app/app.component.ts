@@ -27,8 +27,8 @@ export class AppComponent implements OnInit {
 
   //sidebar methods
   onSelectAll(){
-    this.todoListService.allSelected.next()
     this.navbarText = 'all';
+    this.todoListService.allSelected.next()
   }
   onSelectToday(){
     this.navbarText = 'today';

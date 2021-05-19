@@ -1,9 +1,8 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { TodoListService } from 'src/app/services/todo-list.service';
 import { TodoGroup } from 'src/app/models/todo-group.model';
 import { Task } from 'src/app/models/task.model';
-import { group } from '@angular/animations';
 
 @Component({
   selector: 'app-todo-list',
@@ -52,15 +51,13 @@ export class TodoListComponent implements OnInit {
     });
 
     this.todoListService.groupSelected.subscribe((group: TodoGroup) => {
-      console.log(group);
-      this.filteredGroup = group.groupName
-      // this.todoLists = this.copyTodoList.map((list) => ({ ...list }));
-      // this.todoLists.forEach((list) => {
-      //   list.tasks = list.tasks.filter(
-      //     (task) => task.taskGroup == group.groupName
-      //   );
-      // });
-      // return this.todoLists;
+      this.todoLists = this.copyTodoList.map((list) => ({ ...list }));
+      this.todoLists.forEach((list) => {
+        list.tasks = list.tasks.filter(
+          (task) => task.taskGroup == group.groupName
+        );
+      });
+      return this.todoLists;
     });
   }
 

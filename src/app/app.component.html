@@ -56,6 +56,7 @@
         </a>
         <ul class="collapse list-unstyled" id="pageSubmenu">
           <li>
+            <a (click)="onSelectAll()">all</a>
             <a *ngFor="let todo of todoLists" (click)="onSelectGroup(todo)">{{ todo.groupName }}</a>
           </li>
         </ul>
